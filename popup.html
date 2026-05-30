@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Plan 监控</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Token Plan 监控</h1>
+    <span class="status-dot" id="statusDot"></span>
+  </div>
+
+  <!-- 套餐名称 -->
+  <div class="plan-name" id="planName">--</div>
+
+  <!-- 进度环 -->
+  <div class="progress-ring-container">
+    <svg class="progress-ring" viewBox="0 0 140 140">
+      <circle class="progress-ring-bg" cx="70" cy="70" r="60"/>
+      <circle class="progress-ring-fill" id="progressFill" cx="70" cy="70" r="60"/>
+    </svg>
+    <div class="progress-center">
+      <span class="used-num" id="usedTokens">--</span>
+      <span class="used-label">已用</span>
+    </div>
+  </div>
+
+  <!-- 四宫格数据 -->
+  <div class="stats-grid">
+    <div class="stat-card accent-blue">
+      <span class="stat-label">总配额</span>
+      <span class="stat-value" id="totalTokens">--</span>
+    </div>
+    <div class="stat-card accent-orange">
+      <span class="stat-label">剩余可用</span>
+      <span class="stat-value" id="remainingTokens">--</span>
+    </div>
+    <div class="stat-card accent-green">
+      <span class="stat-label">最近1小时用量</span>
+      <span class="stat-value" id="lastHourUsage">--</span>
+    </div>
+    <div class="stat-card accent-purple">
+      <span class="stat-label">套餐剩余时间</span>
+      <span class="stat-value" id="planRemaining">--</span>
+    </div>
+  </div>
+
+  <!-- 进度条 -->
+  <div class="usage-bar-section">
+    <div class="usage-bar-header">
+      <span>用量进度</span>
+      <span class="usage-percent" id="usagePercent">0%</span>
+    </div>
+    <div class="usage-bar-track">
+      <div class="usage-bar-fill" id="usageBarFill"></div>
+    </div>
+  </div>
+
+  <!-- 状态信息 -->
+  <div class="info-bar" id="infoBar">
+    <span class="cache-badge" id="cacheBadge" style="display:none;">缓存数据</span>
+    <span class="update-time" id="updateTime">--</span>
+  </div>
+
+  <!-- 错误信息 -->
+  <div class="error-msg" id="errorMsg" style="display:none;"></div>
+
+  <!-- 刷新按钮 -->
+  <button class="refresh-btn" id="refreshBtn">
+    <span class="spinner"></span>
+    <span class="btn-text">立即刷新</span>
+  </button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

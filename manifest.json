@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Xiaomi Token Plan 用量监控",
+  "version": "1.0",
+  "description": "实时监控 xiaomimimotokenplan 用量，包含最近1小时/已用/剩余用量及套餐到期提醒",
+  "permissions": ["storage", "notifications", "alarms", "scripting"],
+  "host_permissions": [
+    "https://platform.xiaomimimo.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://platform.xiaomimimo.com/console/plan-manage*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.svg",
+      "48": "icons/icon48.svg",
+      "128": "icons/icon128.svg"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.svg",
+    "48": "icons/icon48.svg",
+    "128": "icons/icon128.svg"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
